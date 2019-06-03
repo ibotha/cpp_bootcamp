@@ -5,7 +5,7 @@ SOURCE=main.cpp phonebook.cpp contact.cpp
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))
 
-DEPS=phonebook.h contact.h
+DEPS=phonebook.hpp contact.hpp
 
 CC=clang++
 

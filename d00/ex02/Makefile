@@ -1,6 +1,6 @@
 NAME=Accountclass
 
-SOURCE=Account.class.cpp
+SOURCE=Account.class.cpp tests.cpp
 
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))

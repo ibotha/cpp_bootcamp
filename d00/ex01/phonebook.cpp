@@ -1,41 +1,37 @@
-#include "phonebook.h"
+#include "phonebook.hpp"
 #include <iostream>
 
 Phonebook::Phonebook()
     :amount(0)
 {
-    for (int i = 0; i < MAX_CONTACTS; i++) {
-        contacts[i] = nullptr;
-    }
 }
 
 bool Phonebook::add()
 {
     if (amount < MAX_CONTACTS) {
-        contacts[amount] = new Contact();
 
         std::cout << "First Name: ";
-        std::getline(std::cin, contacts[amount]->first_name);
+        std::getline(std::cin, contacts[amount].first_name);
         std::cout << "Last Name: ";
-        std::getline(std::cin, contacts[amount]->last_name);
+        std::getline(std::cin, contacts[amount].last_name);
         std::cout << "Nickname: ";
-        std::getline(std::cin, contacts[amount]->nickname);
+        std::getline(std::cin, contacts[amount].nickname);
         std::cout << "Login: ";
-        std::getline(std::cin, contacts[amount]->login);
+        std::getline(std::cin, contacts[amount].login);
         std::cout << "Postal Address: ";
-        std::getline(std::cin, contacts[amount]->postal_address);
+        std::getline(std::cin, contacts[amount].postal_address);
         std::cout << "Email: ";
-        std::getline(std::cin, contacts[amount]->email);
+        std::getline(std::cin, contacts[amount].email);
         std::cout << "Phone Number: ";
-        std::getline(std::cin, contacts[amount]->phone_number);
+        std::getline(std::cin, contacts[amount].phone_number);
         std::cout << "Birthday: ";
-        std::getline(std::cin, contacts[amount]->birthday);
+        std::getline(std::cin, contacts[amount].birthday);
         std::cout << "Favorite Meal: ";
-        std::getline(std::cin, contacts[amount]->favorite_meal);
+        std::getline(std::cin, contacts[amount].favorite_meal);
         std::cout << "Underwear Color: ";
-        std::getline(std::cin, contacts[amount]->underwear_color);
+        std::getline(std::cin, contacts[amount].underwear_color);
         std::cout << "Darkest Secret: ";
-        std::getline(std::cin, contacts[amount]->darkest_secret);
+        std::getline(std::cin, contacts[amount].darkest_secret);
         amount++;
         return true;
     }
@@ -48,7 +44,7 @@ int Phonebook::get_contact_amount() {
 
 std::string Phonebook::get_contact(int index) {
     if (index < amount && index >= 0) {
-        return contacts[index]->to_string();
+        return contacts[index].to_string();
     } else {
         return "Invalid Index";
     }
@@ -83,11 +79,11 @@ std::string Phonebook::format() {
         ret += "|";
         ret += columnize(std::to_string(i));
         ret += "|";
-        ret += columnize(contacts[i]->first_name);
+        ret += columnize(contacts[i].first_name);
         ret += "|";
-        ret += columnize(contacts[i]->last_name);
+        ret += columnize(contacts[i].last_name);
         ret += "|";
-        ret += columnize(contacts[i]->nickname);
+        ret += columnize(contacts[i].nickname);
         ret += "|";
         ret += "\n";
         ret += "+----------+----------+----------+----------+\n";
@@ -97,9 +93,4 @@ std::string Phonebook::format() {
 
 Phonebook::~Phonebook()
 {
-    for (int i = 0; i < MAX_CONTACTS; i++) {
-        if (contacts[i] != nullptr) {
-            delete(contacts[i]);
-        }
-    }
 }
