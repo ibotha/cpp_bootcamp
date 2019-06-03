@@ -2,6 +2,7 @@
 #include <iostream>
 
 Phonebook::Phonebook()
+    :amount(0)
 {
     for (int i = 0; i < MAX_CONTACTS; i++) {
         contacts[i] = nullptr;

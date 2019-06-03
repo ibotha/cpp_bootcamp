@@ -7,7 +7,7 @@ class Phonebook
 {
 private:
     Contact *contacts[MAX_CONTACTS];
-    int amount = 0;
+    int amount;
 public:
     Phonebook();
 

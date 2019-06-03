@@ -7,7 +7,7 @@ OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))
 
 DEPS=
 
-CC=g++
+CC=clang++
 
 CFLAGS=-Wall -Werror -Wextra
 
@@ -29,6 +29,3 @@ $(ODIR):
 	mkdir $(ODIR)
 
 .PHONY: clean all fclean
-
-read:
-	echo $(OBJECTS)

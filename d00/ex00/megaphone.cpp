@@ -7,8 +7,6 @@ int main(int argc, char** argv) {
 
         for (int i = 1; i < argc; i++) {
             ret += argv[i];
-            if (i < (argc - 1))
-                ret += " ";
         }
 
         for (unsigned int i = 0; i < ret.length(); i++) {
