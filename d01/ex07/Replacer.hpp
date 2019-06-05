@@ -16,6 +16,8 @@ private:
 
     bool is_Ready;
     void flush();
+    unsigned int findCut();
+    std::string replace(const std::string &src);
 
 public:
     Replacer(std::string filename, std::string s1, std::string s2);
