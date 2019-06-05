@@ -1,11 +1,11 @@
-NAME=phonebook
+NAME=Ref
 
-SOURCE=main.cpp phonebook.cpp contact.cpp
+SOURCE=ex04.cpp
+
+DEPS=
 
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))
-
-DEPS=phonebook.hpp contact.hpp
 
 CC=clang++
 

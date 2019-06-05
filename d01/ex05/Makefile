@@ -1,11 +1,11 @@
-NAME=phonebook
+NAME=Human
 
-SOURCE=main.cpp phonebook.cpp contact.cpp
+SOURCE=main.cpp Brain.cpp Human.cpp
+
+DEPS=Brain.hpp Human.hpp
 
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))
-
-DEPS=phonebook.hpp contact.hpp
 
 CC=clang++
 

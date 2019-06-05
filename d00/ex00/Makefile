@@ -25,6 +25,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
+re: fclean all
+
 $(ODIR):
 	mkdir $(ODIR)
 

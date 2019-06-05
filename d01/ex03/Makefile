@@ -1,11 +1,11 @@
-NAME=phonebook
+NAME=ZombieHorde
 
-SOURCE=main.cpp phonebook.cpp contact.cpp
+SOURCE=main.cpp Zombie.cpp ZombieHorde.cpp
+
+DEPS=Zombie.hpp ZombieHorde.hpp
 
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))
-
-DEPS=phonebook.hpp contact.hpp
 
 CC=clang++
 
