@@ -12,9 +12,7 @@ private:
         FILE = 1,
         SHOUT = 2
     };
-    static const std::string s_Destinations[];
 
-    Destination convert(std::string const type);
     void logToFile(std::string const message);
     void logToConsole(std::string const message);
     std::string makeLogEntry(std::string const message);

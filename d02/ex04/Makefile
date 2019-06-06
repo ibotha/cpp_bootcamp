@@ -1,8 +1,8 @@
-NAME=fixed
+NAME=eval_expr
 
-SOURCE=main.cpp Fixed.cpp
+SOURCE=main.cpp Fixed.cpp Evaluator.cpp
 
-DEPS=Fixed.hpp
+DEPS=Fixed.hpp Evaluator.hpp
 
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))

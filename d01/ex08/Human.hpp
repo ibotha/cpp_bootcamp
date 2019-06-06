@@ -3,6 +3,7 @@
 
 #include <string>
 
+
 class Human
 {
 private:
@@ -11,7 +12,6 @@ private:
         RANGED = 1,
         SHOUT = 2
     };
-    static const std::string attackTypes[];
 
     AttackType convert(std::string type);
     void meleeAttack(std::string const & target);

@@ -1,2 +1,5 @@
 [submodule "d02/classcreator"]
 	path = d02/classcreator
+[submodule "classcreator"]
+	path = classcreator
+	url = https://github.com/Moondog360/classcreator.git

@@ -2,17 +2,6 @@
 #include <iostream>
 #include <ctime>
 
-const std::string Logger::s_Destinations[] = {"console", "file"};
-
-Logger::Destination Logger::convert(std::string const type)
-{
-    for (size_t i = 0; i < (sizeof(s_Destinations) / sizeof(std::string)); i++)
-    {
-        if (type == s_Destinations[i]) return static_cast<Destination>(i);
-    }
-    return CONSOLE;
-}
-
 Logger::Logger(std::string const filename)
     :m_LogFile(filename)
 {
@@ -28,6 +17,8 @@ void Logger::logToConsole(std::string const log)
     std::cout << log << "\n";
 }
 
+typedef void	(Logger::*f)(std::string);
+
 std::string Logger::makeLogEntry(const std::string message)
 {
     std::string ret;
@@ -40,15 +31,23 @@ std::string Logger::makeLogEntry(const std::string message)
 
 void Logger::log(std::string const destination, std::string const message)
 {
-    switch(convert(destination))
+	struct pair {
+		std::string match;
+		f func;
+	};
+	pair	dests[2];
+
+	dests[0].match = "console";
+	dests[0].func = &Logger::logToConsole;
+	dests[1].match = "file";
+	dests[1].func = &Logger::logToFile;
+    for (size_t i = 0; i < 2; i++)
     {
-        case CONSOLE:
-            logToConsole(makeLogEntry(message));
-            break;
-        case FILE:
-            logToFile(makeLogEntry(message));
-            break;
-        default:
-            break;
+        if (destination == dests[i].match) {
+			f function = dests[i].func;
+			(this->*function)(message);
+			return;
+		}
     }
+	logToConsole(message);
 }
