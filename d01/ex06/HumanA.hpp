@@ -8,7 +8,7 @@ class HumanA
 {
 private:
     std::string m_Name;
-    Weapon *m_Weapon;
+    Weapon &m_Weapon;
 public:
     HumanA(std::string name, Weapon &weapon);
     void attack();
