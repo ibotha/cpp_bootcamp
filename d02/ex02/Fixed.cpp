@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 08:23:33 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/06 10:35:42 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/07 15:18:45 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,22 @@
 
 const int Fixed::s_Point = 8;
 
-Fixed Fixed::min(Fixed const &a, Fixed const &b)
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
 	return a < b ? a : b;
 }
 
-Fixed Fixed::max(Fixed const &a, Fixed const &b)
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	return a > b ? a : b;
+}
+
+const Fixed & Fixed::min(Fixed const &a, Fixed const &b)
+{
+	return a < b ? a : b;
+}
+
+Fixed const & Fixed::max(Fixed const &a, Fixed const &b)
 {
 	return a > b ? a : b;
 }

@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   SuperTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 07:47:19 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/07 13:21:28 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/07 15:35:31 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		FRAGTRAP_HPP
-# define	FRAGTRAP_HPP
-# include "ClapTrap.hpp"
+#ifndef		SUPERTRAP_HPP
+# define	SUPERTRAP_HPP
 # include <string>
+#include "FragTrap.hpp"
+#include "NinjaTrap.hpp"
 
 
-class FragTrap : public ClapTrap
-{
+class SuperTrap : public FragTrap, public NinjaTrap {
 	public:
-		FragTrap(std::string const & name);
-		FragTrap(FragTrap const & src);
-		~FragTrap();
-		FragTrap & operator=(FragTrap const & src);
+		SuperTrap(std::string const & name);
+
+		SuperTrap(SuperTrap const & src);
+		~SuperTrap();
+		SuperTrap & operator=(SuperTrap const & src);
 
 		void meleeAttack(std::string const &target);
 		void rangedAttack(std::string const &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		void vaulthunter_dot_exe(std::string const & target);
 
 	private:
-		struct ability {
+		struct challenge {
 			std::string name;
-			unsigned int damage;
 		};
 
-		static const ability s_VaultHunterAbilities[];
-		
+		static const challenge s_Challenges[];
 	protected:
 
 };

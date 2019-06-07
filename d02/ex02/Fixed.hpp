@@ -16,8 +16,6 @@ class Fixed {
 		int toInt() const;
 		float toFloat() const;
 
-		friend std::ostream &operator<<(std::ostream &o, Fixed const &f);
-
 		// Comparisons
 		bool operator<(Fixed const &comp) const;
 		bool operator>(Fixed const &comp) const;
@@ -36,8 +34,10 @@ class Fixed {
 		Fixed operator--();
 		Fixed operator--(int i);
 
-		static Fixed min(Fixed const &a, Fixed const &b);
-		static Fixed max(Fixed const &a, Fixed const &b);
+		static Fixed &min(Fixed &a, Fixed &b);
+		static Fixed const &min(Fixed const &a, Fixed const &b);
+		static Fixed &max(Fixed &a, Fixed &b);
+		static Fixed const &max(Fixed const &a, Fixed const &b);
 
 	private:
 		int m_Number;

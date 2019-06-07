@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:22:30 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/07 13:13:42 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/07 15:29:17 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,48 +83,47 @@ void ClapTrap::setName(std::string const & name)
 	m_Name = name;
 }
 
-
-unsigned int ClapTrap::getHitPoints()
+unsigned int ClapTrap::getHitPoints() const
 {
 	return m_HitPoints;
 }
 
-unsigned int ClapTrap::getMaxHitPoints()
+unsigned int ClapTrap::getMaxHitPoints() const
 {
 	return m_MaxHitPoints;
 }
 
-unsigned int ClapTrap::getEnergyPoints()
+unsigned int ClapTrap::getEnergyPoints() const
 {
 	return m_EnergyPoints;
 }
 
-unsigned int ClapTrap::getMaxEnergyPoints()
+unsigned int ClapTrap::getMaxEnergyPoints() const
 {
 	return m_MaxEnergyPoints;
 }
 
-unsigned int ClapTrap::getLevel()
+unsigned int ClapTrap::getLevel() const
 {
 	return m_Level;
 }
 
-unsigned int ClapTrap::getMeleeDamage()
+unsigned int ClapTrap::getMeleeDamage() const
 {
 	return m_MeleeDamage;
 }
 
-unsigned int ClapTrap::getRangedDamage()
+unsigned int ClapTrap::getRangedDamage() const
 {
 	return m_RangedDamage;
 }
 
-unsigned int ClapTrap::getArmourDamageReduction()
+unsigned int ClapTrap::getArmourDamageReduction() const
 {
 	return m_ArmourDamageReduction;
 }
 
-std::string const & ClapTrap::getName()
+std::string const & ClapTrap::getName() const
 {
 	return m_Name;
 }

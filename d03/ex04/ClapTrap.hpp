@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 07:47:19 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/07 13:20:30 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/07 14:15:46 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ class ClapTrap {
 		void setArmourDamageReduction(unsigned int adr);
 		void setName(std::string const & name);
 
-		unsigned int getHitPoints();
-		unsigned int getMaxHitPoints();
-		unsigned int getEnergyPoints();
-		unsigned int getMaxEnergyPoints();
-		unsigned int getLevel();
-		unsigned int getMeleeDamage();
-		unsigned int getRangedDamage();
-		unsigned int getArmourDamageReduction();
-		std::string const &getName();
+		unsigned int getHitPoints() const;
+		unsigned int getMaxHitPoints() const;
+		unsigned int getEnergyPoints() const;
+		unsigned int getMaxEnergyPoints() const;
+		unsigned int getLevel() const;
+		unsigned int getMeleeDamage() const;
+		unsigned int getRangedDamage() const;
+		unsigned int getArmourDamageReduction() const;
+		std::string const &getName() const;
 
 	protected:
 		unsigned int m_HitPoints,

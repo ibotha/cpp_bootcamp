@@ -16,9 +16,6 @@ class Fixed {
 		int toInt() const;
 		float toFloat() const;
 
-		friend std::ostream &operator<<(std::ostream &o, Fixed const &f);
-		friend std::istream &operator>>(std::istream &i, Fixed const &f);
-
 		// Comparisons
 		bool operator<(Fixed const &comp) const;
 		bool operator>(Fixed const &comp) const;

@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 08:23:33 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/06 10:56:38 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/07 15:02:39 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ Fixed::Fixed()
 
 Fixed::Fixed(float const &n)
 {
+	std::cout << "Float constructor called\n";
 	m_Number = roundf(n * (1 << s_Point));
+}
+
+Fixed::Fixed(int const &n)
+{
+	std::cout << "Int constructor called\n";
+	m_Number = n * (1 << s_Point);
 }
 
 Fixed::Fixed(Fixed const &src)
@@ -48,7 +55,6 @@ Fixed &Fixed::operator=(Fixed const &src)
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits called\n";
 	return m_Number;	
 }
 

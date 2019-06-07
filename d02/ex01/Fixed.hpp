@@ -6,6 +6,7 @@
 class Fixed {
 	public:
 		Fixed(float const &n);
+		Fixed(int const &n);
 		Fixed();
 		Fixed(Fixed const & src);
 		~Fixed();
@@ -15,8 +16,6 @@ class Fixed {
 		void setRawBits(int number);
 		int toInt() const;
 		float toFloat() const;
-
-		friend std::ostream &operator<<(std::ostream &o, Fixed const &f);
 	private:
 		int m_Number;
 		static const int s_Point;
