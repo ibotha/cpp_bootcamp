@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Aweapon.cpp                                              :+:      :+:    :+:   */
+/*   Enemy.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotha   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/08 10/05/32 by ibotha          #+#    #+#             */
-/*   Updated: 2019/06/08 10/05/32 by ibotha         ###   ########.fr       */
+/*   Created: 2019/06/08 16/44/47 by ibotha          #+#    #+#             */
+/*   Updated: 2019/06/08 16/44/47 by ibotha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AWeapon.hpp"
+#include "Enemy.hpp"
 
-AWeapon::AWeapon() {}
+Enemy::Enemy() {}
 
-AWeapon::AWeapon(AWeapon const & src) {
+Enemy::Enemy(Enemy const & src) {
 	*this = src;	
 }
 
-AWeapon::~AWeapon() {}
+Enemy::~Enemy() {}
 
-AWeapon & AWeapon::operator=(AWeapon const & src) {
+Enemy & Enemy::operator=(Enemy const & src) {
 	if (this != &src)
 	{
 	*this = src;
@@ -28,23 +28,29 @@ AWeapon & AWeapon::operator=(AWeapon const & src) {
 	return (*this);
 }
 
-std::string const &AWeapon::getName() const
+Enemy::Enemy(int hp, std::string const & type)
+	:m_Type(type), m_HP(hp)
 {
-	return m_Name;
+
 }
 
-int AWeapon::getAPCost() const
+
+std::string const &Enemy::getType() const
 {
-	return m_APCost;
+	return m_Type;
 }
 
-int AWeapon::getDamage() const
+int Enemy::getHP() const
 {
-	return m_Damage;
+	return m_HP;
 }
 
-AWeapon::AWeapon(std::string const & name, int damage, int apcost)
-	:m_Name(name), m_Damage(damage), m_APCost(apcost)
+
+void Enemy::takeDamage(int amount)
 {
-	
+	if (amount > 0)
+	{
+		m_HP -= amount;
+	}
 }
+

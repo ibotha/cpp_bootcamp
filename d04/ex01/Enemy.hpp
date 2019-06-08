@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.hpp                                    :+:      :+:    :+:   */
+/*   Enemy.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/08 10:22:39 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/08 16:50:27 by ibotha           ###   ########.fr       */
+/*   Created: 2019/06/08 16:49:44 by ibotha            #+#    #+#             */
+/*   Updated: 2019/06/08 16:55:16 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		PLASMARIFLE_HPP
-# define	PLASMARIFLE_HPP
+#ifndef		ENEMY_HPP
+# define	ENEMY_HPP
 
-#include "AWeapon.hpp"
+# include <string>
 
-class PlasmaRifle : public AWeapon {
+class Enemy {
 	public:
-		PlasmaRifle();
-		PlasmaRifle(PlasmaRifle const & src);
-		virtual ~PlasmaRifle();
-		PlasmaRifle & operator=(PlasmaRifle const & src);
-		virtual void attack() const;
+		Enemy(Enemy const & src);
+		Enemy & operator=(Enemy const & src);
+
+		Enemy(int hp, std::string const & type);
+		virtual ~Enemy();
+		std::string const &getType() const;
+		int getHP() const;
+
+		virtual void takeDamage(int amount);
 	private:
+		std::string m_Type;
+		int m_HP;
+		Enemy();
+
 	protected:
 
 };

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Aweapon.hpp                                              :+:      :+:    :+:   */
+/*   AWeapon.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibotha   <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/08 10/05/32 by ibotha          #+#    #+#             */
-/*   Updated: 2019/06/08 10/05/32 by ibotha         ###   ########.fr       */
+/*   Created: 2019/06/08 16:49:49 by ibotha            #+#    #+#             */
+/*   Updated: 2019/06/08 16:50:23 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class AWeapon {
 	public:
 		AWeapon(AWeapon const & src);
 		AWeapon & operator=(AWeapon const & src);
-		AWeapon(std::string const & name, int apcost, int damage);
+		AWeapon(std::string const & name, int damage, int apcost);
 		virtual ~AWeapon();
 
 		std::string const &getName() const;

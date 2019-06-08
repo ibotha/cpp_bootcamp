@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.cpp                                    :+:      :+:    :+:   */
+/*   RadScorpion.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/08 10:22:11 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/08 16:42:29 by ibotha           ###   ########.fr       */
+/*   Created: 2019/06/08 17:01:41 by ibotha            #+#    #+#             */
+/*   Updated: 2019/06/08 17:11:34 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PlasmaRifle.hpp"
+#include "RadScorpion.hpp"
 #include <iostream>
 
-PlasmaRifle::PlasmaRifle()
-	:AWeapon("Plasma Rifle", 21, 5)
+RadScorpion::RadScorpion()
+	:Enemy(80, "Rad Scorpion")
 {
+	std::cout << "* click click click *\n";
 }
 
-PlasmaRifle::PlasmaRifle(PlasmaRifle const &src)
+RadScorpion::RadScorpion(RadScorpion const & src)
+	:Enemy(src)
 {
 	*this = src;
 }
 
-PlasmaRifle::~PlasmaRifle()
+RadScorpion::~RadScorpion()
 {
+	std::cout << "* SPROTCH *\n";
 }
 
-PlasmaRifle &PlasmaRifle::operator=(PlasmaRifle const &src)
-{
+RadScorpion & RadScorpion::operator=(RadScorpion const & src) {
 	if (this != &src)
 	{
-		*this = src;
+	*this = src;
 	}
 	return (*this);
-}
-
-void PlasmaRifle::attack() const
-{
-	std::cout << "* piouuu piouuu piouuu *\n";
 }

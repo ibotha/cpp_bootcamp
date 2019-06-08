@@ -1,0 +1,16 @@
+Stuff
+
+Convert to declaration to definition
+([^\&\*\s\t]*)?([\&\*\s\t])?(\(.*\).*);
+
+CLASSNAME::$1$2$3\n{\n\n}\n
+
+Setters
+(.*)(CLASSNAME::set)(.*)(\(.* .* )(.*)(\).*\n\{\n)
+
+$1$2$3$4$5$6\tm_$3 = $5;
+
+Getters
+(.*)(CLASSNAME::get)(.*)(\(.*\).*\n\{\n)
+
+$1$2$3$4\treturn m_$3;

@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.cpp                                    :+:      :+:    :+:   */
+/*   SuperMutant.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/08 10:22:11 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/08 16:42:29 by ibotha           ###   ########.fr       */
+/*   Created: 2019/06/08 17:01:41 by ibotha            #+#    #+#             */
+/*   Updated: 2019/06/08 17:07:53 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PlasmaRifle.hpp"
+#include "SuperMutant.hpp"
 #include <iostream>
 
-PlasmaRifle::PlasmaRifle()
-	:AWeapon("Plasma Rifle", 21, 5)
+SuperMutant::SuperMutant()
+	:Enemy(170, "Super Mutant")
 {
+	std::cout << "Gaaah. Me want smash heads !\n";
 }
 
-PlasmaRifle::PlasmaRifle(PlasmaRifle const &src)
+SuperMutant::SuperMutant(SuperMutant const & src)
+	:Enemy(src)
 {
 	*this = src;
 }
 
-PlasmaRifle::~PlasmaRifle()
+SuperMutant::~SuperMutant()
 {
+	std::cout << "Aaargh !\n";
 }
 
-PlasmaRifle &PlasmaRifle::operator=(PlasmaRifle const &src)
-{
+SuperMutant & SuperMutant::operator=(SuperMutant const & src) {
 	if (this != &src)
 	{
-		*this = src;
+	*this = src;
 	}
 	return (*this);
 }
 
-void PlasmaRifle::attack() const
+void SuperMutant::takeDamage(int amount)
 {
-	std::cout << "* piouuu piouuu piouuu *\n";
+	Enemy::takeDamage(amount - 3);
 }

@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.hpp                                    :+:      :+:    :+:   */
+/*   PowerFist.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/08 10:22:39 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/08 16:50:27 by ibotha           ###   ########.fr       */
+/*   Created: 2019/06/08 10:22:11 by ibotha            #+#    #+#             */
+/*   Updated: 2019/06/08 10:30:01 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		PLASMARIFLE_HPP
-# define	PLASMARIFLE_HPP
+#include "PowerFist.hpp"
+#include <iostream>
 
-#include "AWeapon.hpp"
+PowerFist::PowerFist()
+	:AWeapon("Power Fist", 50, 8)
+{
+}
 
-class PlasmaRifle : public AWeapon {
-	public:
-		PlasmaRifle();
-		PlasmaRifle(PlasmaRifle const & src);
-		virtual ~PlasmaRifle();
-		PlasmaRifle & operator=(PlasmaRifle const & src);
-		virtual void attack() const;
-	private:
-	protected:
+PowerFist::PowerFist(PowerFist const &src)
+{
+	*this = src;
+}
 
-};
+PowerFist::~PowerFist()
+{
+}
 
-#endif
+PowerFist &PowerFist::operator=(PowerFist const &src)
+{
+	if (this != &src)
+	{
+		*this = src;
+	}
+	return (*this);
+}
+
+void PowerFist::attack() const
+{
+	std::cout << "* pschhh... SBAM! *\n";
+}
