@@ -68,11 +68,12 @@ void Invader::getInput()
 	bzero((void*)m_Keyboard, sizeof(m_Keyboard));
 
 	timeout(0);
-	while((c = getch()) != -1)
+	while((c = wgetch(m_Window)) != -1)
 	{
 		m_Keyboard[c] = true;
 	}
 	timeout(-1);
+	flushinp();
 }
 
 void Invader::update()
