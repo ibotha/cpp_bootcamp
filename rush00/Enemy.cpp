@@ -6,13 +6,16 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 15:59:59 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/09 12:16:37 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/09 16:07:54 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Enemy.hpp"
+#include "Game.hpp"
+#include <random>
 
 Enemy::Enemy()
+	:AEntity(getmaxx(Game::getInstance()->getWindow()), (std::rand() % (getmaxy(Game::getInstance()->getWindow()) - 2) + 1), '=')
 {
 	addstr("Enemy here");
 }
@@ -46,15 +49,15 @@ Enemy &Enemy::operator=(Enemy const &e)
 
 void Enemy::Update(bool keystate[KEY_MAX])
 {
-	if (keystate[(int)'a'])
-	{
-		setEntityX(getEntityX() + 1);
-	}
+	(void)keystate;
+	setEntityX(getEntityX() - 1);
+	if (getEntityX() < 0)
+		setEntityX(getmaxx(Game::getInstance()->getWindow()));
 }
 
 void Enemy::Render()
 {
-	mvaddch(this->getEntityX(), this->getEntityY(), this->getEntitySprite());
+	mvaddch(this->getEntityY(), this->getEntityX(), this->getEntitySprite());
 }
 
 AEntity *Enemy::clone()

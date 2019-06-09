@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 16:26:22 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/09 12:50:23 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/09 16:29:16 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ private:
 	Game();
 
 	bool m_Running;
+	bool m_Paused;
 	bool m_Keyboard[KEY_MAX];
 
 	EntityList m_Enemies;

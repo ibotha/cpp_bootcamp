@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:00:24 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/09 13:01:23 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/09 15:55:22 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Player::Player()
 }
 
 Player::Player(Player const &player)
-	:AEntity()
+	:AEntity(player)
 {
     return;
 }
@@ -44,9 +44,9 @@ Player &Player::operator=(Player const &rhs)
 
 void Player::Update(bool keyboard[KEY_MAX])
 {
-    if (keyboard[KEY_UP])
+    if (keyboard[KEY_UP] && getEntityY() > 1)
         setEntityY(getEntityY() - 1);
-    if (keyboard[KEY_DOWN])
+    if (keyboard[KEY_DOWN] && getEntityY() < (getmaxy(Game::getInstance()->getWindow()) - 2))
         setEntityY(getEntityY() + 1);
     return;
 }
