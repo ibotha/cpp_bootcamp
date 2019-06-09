@@ -1,8 +1,17 @@
-NAME=invaders
+NAME= ft_retro
 
-SOURCE=main.cpp Invader.cpp
+SOURCE=	main.cpp\
+		Game.cpp\
+		AEntity.cpp\
+		EntityList.cpp\
+		Enemy.cpp\
+		Player.cpp
 
-DEPS=Invader.hpp
+DEPS=	Game.hpp\
+		AEntity.hpp\
+		EntityList.hpp\
+		Enemy.hpp\
+		Player.hpp
 
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))

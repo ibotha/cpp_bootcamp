@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Player.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 08:23:28 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/09 12:47:27 by ibotha           ###   ########.fr       */
+/*   Created: 2019/06/08 16:00:36 by cletinic          #+#    #+#             */
+/*   Updated: 2019/06/09 13:04:55 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"Game.hpp"
-#include <sstream>
-#include <iostream>
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
-#include <random>
-#define ITERMAX 10000
+#include "AEntity.hpp"
 
-int main(void)
+class Player : public AEntity 
 {
-	std::srand(std::time(0));
+    public:
+        Player();
+        ~Player(); 
 
-	Game::getInstance()->run();
-	delete Game::getInstance();
-}
+
+        virtual void Update(bool keyboard[]);
+        virtual void Render();
+    private:
+        virtual AEntity *clone();
+        Player &operator=(Player const &rhs);
+		Player(Player const &player);
+    protected:
+};
+
+#endif
+
