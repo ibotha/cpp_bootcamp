@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:00:36 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/09 13:09:31 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 13:12:36 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Projectile : public AEntity
         Projectile &operator=(Projectile const &rhs);
 
         virtual void Update(bool keyboard[]);
-        virtual void Render();
         virtual AEntity *clone();
     private:
 		Projectile();

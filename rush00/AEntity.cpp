@@ -6,24 +6,32 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 10:15:57 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/09 16:12:52 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 14:30:20 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AEntity.hpp"
+#include "Game.hpp"
+
 
 AEntity::AEntity()
-	:m_X(0), m_Y(0), m_Sprite('*'), m_ToDelete(false)
+	:m_X(0), m_Y(0), m_Sprite(Game::getInstance()->getSprite(0)), m_Aux(Game::getInstance()->getSprite(0)), m_ToDelete(false)
 {
     return;
 }
 
-AEntity::AEntity(int xPos, int yPos, char sprite) : m_X(xPos), m_Y(yPos), m_Sprite(sprite), m_ToDelete(false)
+AEntity::AEntity(int xPos, int yPos, Sprite const &sprite) : m_X(xPos), m_Y(yPos), m_Sprite(sprite), m_Aux(sprite), m_ToDelete(false)
+{
+	return;
+}
+
+AEntity::AEntity(int xPos, int yPos, Sprite const &sprite1, Sprite const &sprite2) : m_X(xPos), m_Y(yPos), m_Sprite(sprite1), m_Aux(sprite2), m_ToDelete(false)
 {
     return;
 }
 
 AEntity::AEntity(AEntity const &src)
+	:m_Sprite(src.m_Sprite), m_Aux(src.m_Aux)
 {
     *this = src;
 
@@ -39,42 +47,51 @@ AEntity &AEntity::operator=(AEntity const &rhs)
 {
     if (this != &rhs)
     {
-        this->m_X = rhs.m_X;
-        this->m_Y = rhs.m_Y;
-        this->m_Sprite = rhs.m_Sprite;
+        *this = rhs;
     }
 
     return *this;
 }
 
-// void AEntity::Update(bool keyboard[KEY_MAX])
-// {
-//     if (keyboard[KEY_UP])
-// 		m_Y--;
-// 	if (keyboard[KEY_DOWN])
-// 		m_Y++;
-// 	if (keyboard[KEY_LEFT])
-// 		m_X--;
-// 	if (keyboard[KEY_RIGHT])
-// 		m_X++;
-//     return;
-// }
-
 // // cannot have multiple renders within each Entity
 // // rather render once a movement has been made.
 void AEntity::Render() // for now let renderer take in the base class- should be done through inheritance? / friend?
 { 
-	mvaddch(this->m_Y, this->m_X, this->m_Sprite);
+//	mvaddch(this->m_Y, this->m_X, this->m_Sprite);
+    m_Frame++;
+    if (m_Frame >= 20)
+        m_Frame = 0;
+    if (m_Frame < 10)
+	    m_Sprite.Draw(this->m_Y, this->m_X, Game::getInstance()->getWindow());
+    else if (m_Frame < 20)
+	    m_Aux.Draw(this->m_Y, this->m_X, Game::getInstance()->getWindow());
     return;
 }
+
+// bool RunThroughOverlay(char *a, char *b)
 
 //if the enemies move within a predictable manner, then the only collision to be concerned with is the player colliding witht the enemy
 bool AEntity::checkIfOverlay(AEntity *instance)
 {
-    if (instance->getEntityX() == this->m_X && instance->getEntityY() == this->m_Y)
-    {
+	int x, y, mx, my;
+	x = instance->getEntityX();
+	y = instance->getEntityY();
+	my = instance->getEntityY() + instance->getEntitySprite().getHeight();
+	mx = instance->getEntityX() + instance->getEntitySprite().getWidth();
+	int x1, y1, mx1, my1;
+	x1 = this->getEntityX();
+	y1 = this->getEntityY();
+	my1 = this->getEntityY() + this->getEntitySprite().getHeight();
+	mx1 = this->getEntityX() + this->getEntitySprite().getWidth();
+
+    if (
+		x >= x1 && x < mx1 && y >= y1 && y < my1
+	)
         return true;
-    }
+	if (
+		x1 >= x && x1 < mx && y1 >= y && y1 < my
+	)
+		return true;
     return false;
 }
 
@@ -96,7 +113,7 @@ int AEntity::getEntityY(void) const
     return this->m_Y;
 }
 
-char AEntity::getEntitySprite(void) const
+Sprite const &AEntity::getEntitySprite(void) const
 {
     return this->m_Sprite;
 }
@@ -109,11 +126,6 @@ void AEntity::setEntityX(int posX)
 void AEntity::setEntityY(int posY)
 {
     this->m_Y = posY;
-    return;
-}
-void AEntity::setEntitySprite(char sprite)
-{
-    this->m_Sprite = sprite;
     return;
 }
 

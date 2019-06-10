@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:00:36 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/09 13:04:55 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 13:15:32 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ class Player : public AEntity
         Player();
         ~Player(); 
 
-
         virtual void Update(bool keyboard[]);
-        virtual void Render();
     private:
         virtual AEntity *clone();
         Player &operator=(Player const &rhs);
 		Player(Player const &player);
+		size_t m_Cooldown;
     protected:
 };
 

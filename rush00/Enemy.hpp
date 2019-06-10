@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:00:09 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/09 12:21:22 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 13:11:08 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class Enemy : public AEntity
 		Enemy &operator=(Enemy const &e);
 
 		virtual void Update(bool keystate[KEY_MAX]);
-		virtual void Render();
 		virtual AEntity *clone();
     private:
 

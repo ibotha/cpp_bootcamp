@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 09:42:17 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/09 12:17:47 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 13:27:26 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ class EntityList {
 		void Remove(unsigned int i);
 		void Update(bool keystate[KEY_MAX]);
 		void Render();
+		void Clean();
+		void Clear();
 		AEntity *operator[](unsigned int i);
 		unsigned int getSize();
 

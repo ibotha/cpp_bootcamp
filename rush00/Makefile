@@ -5,13 +5,17 @@ SOURCE=	main.cpp\
 		AEntity.cpp\
 		EntityList.cpp\
 		Enemy.cpp\
-		Player.cpp
+		Player.cpp\
+		Projectile.cpp\
+		sprite.cpp
 
 DEPS=	Game.hpp\
 		AEntity.hpp\
 		EntityList.hpp\
 		Enemy.hpp\
-		Player.hpp
+		Player.hpp\
+		Projectile.hpp\
+		Sprite.hpp
 
 ODIR=obj
 OBJECTS := $(patsubst %.cpp, $(ODIR)/%.o, $(SOURCE))

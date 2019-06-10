@@ -6,17 +6,16 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 09:42:17 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/09 12:27:08 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 13:30:21 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "EntityList.hpp"
 #include <string>
 
-EntityList::EntityList()
-	:m_Data(nullptr), m_Size(0)
+EntityList::EntityList() : m_Data(nullptr), m_Size(0)
 {
-
+	return;
 }
 
 EntityList::EntityList(EntityList const &src)
@@ -32,6 +31,13 @@ EntityList::EntityList(EntityList const &src)
 EntityList::~EntityList()
 {
 	DeleteLink(m_Data);
+}
+
+void EntityList::Clear()
+{
+	DeleteLink(m_Data);
+	m_Size = 0;
+	m_Data = nullptr;
 }
 
 EntityList &EntityList::operator=(EntityList const &src)
@@ -112,10 +118,12 @@ void EntityList::Remove(AEntity *e)
 	if (!m_Data)
 		return;
 	s_Link *cur = m_Data;
-	while (cur->next && cur->e != e)
+	while (cur && cur->e != e)
 	{
 		cur = cur->next;
 	}
+	if (!cur)
+		return;
 	if (cur->prev)
 	{
 		cur->prev->next = cur->next;
@@ -186,3 +194,18 @@ void EntityList::Render()
 	}
 }
 
+void EntityList::Clean()
+{
+	if (!m_Data)
+		return;
+	s_Link *cur = m_Data;
+	while(cur)
+	{
+		s_Link *temp = cur->next;
+		if (cur->e->checkToDelete())
+		{
+			Remove(cur->e);
+		}
+		cur = temp;
+	}
+}

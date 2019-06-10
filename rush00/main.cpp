@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include"Game.hpp"
-#include <sstream>
-#include <iostream>
+
 
 #include <random>
 #define ITERMAX 10000
