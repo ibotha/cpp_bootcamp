@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 12:20:28 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/10 14:48:28 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 17:12:43 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,10 @@ void Game::SetMenu()
 
 void Game::UpdateMenu()
 {
+	m_Frame++;
+	if (m_Frame >= 10)
+		m_Frame = 0;
+
 	if (m_Keyboard[KEY_UP] && m_Selection > 0)
 		m_Selection--;
 	if (m_Keyboard[KEY_DOWN] && m_Selection < 1)
@@ -162,9 +166,31 @@ void Game::UpdateMenu()
 }
 
 void Game::RenderMenu()
-{
-	mvaddstr(getmaxy(m_Window) / 3, getmaxx(m_Window) / 2 - 4, m_Selection == 0 ? "*Play Game" : "Play Game");
-	mvaddstr((getmaxy(m_Window) / 3) * 2, getmaxx(m_Window) / 2 - 2, m_Selection == 1 ? "*Exit" : "Exit");
+{	
+	int mx = getmaxx(m_Window);
+	int my = getmaxy(m_Window);
+	for (int i = 0; i < my; i += 5)
+	{
+		for (int j = 0; j < mx; j += 10)
+		{
+			mvaddstr(i, j - m_Frame, "=====     ");
+		}
+	}
+	if (m_Selection == 0)
+		BORDERSTART;
+	mvaddstr(getmaxy(m_Window) / 3, getmaxx(m_Window) / 2 - 11, "      Play Game       ");
+	
+	if (m_Selection == 0)
+		BORDEREND;
+
+	
+	if (m_Selection == 1)
+		BORDERSTART;
+
+	mvaddstr((getmaxy(m_Window) / 3) * 2, getmaxx(m_Window) / 2 - 9, "      Exit       ");
+	if (m_Selection == 1)
+		BORDEREND;
+
 }
 
 void Game::SetRunning()

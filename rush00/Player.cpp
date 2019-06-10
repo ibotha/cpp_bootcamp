@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 16:00:24 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/10 14:42:53 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 17:04:47 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void Player::Update(bool keyboard[KEY_MAX])
     {
 		if (m_Cooldown < 10)
 		{
-			Projectile *newProj = new Projectile(getEntityX() + getEntitySprite().getWidth(), getEntityY(), 4, 0);
+			Projectile *newProj = new Projectile(getEntityX() + getEntitySprite().getWidth(), getEntityY(), 2, 0);
 			Game::getInstance()->getProjectileList().Push(newProj);
 			m_Cooldown = 20;
 		}

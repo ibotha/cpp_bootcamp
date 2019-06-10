@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 15:59:59 by cletinic          #+#    #+#             */
-/*   Updated: 2019/06/10 14:20:33 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/10 17:04:34 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Enemy::Update(bool keystate[KEY_MAX])
 	change = rand() % 1000;
 	if (change < 5)
 	{
-		Projectile *newProj = new Projectile(getEntityX(), getEntityY(), -4, 0);
+		Projectile *newProj = new Projectile(getEntityX(), getEntityY(), -2, 0);
 		Game::getInstance()->getEnemyList().Push(newProj);
 	}
 	if (change < 100)
