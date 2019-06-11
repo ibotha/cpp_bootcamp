@@ -6,7 +6,7 @@
 /*   By: ibotha <ibotha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 00:04:34 by ibotha            #+#    #+#             */
-/*   Updated: 2019/06/09 01:26:20 by ibotha           ###   ########.fr       */
+/*   Updated: 2019/06/09 08:26:21 by ibotha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Character & Character::operator=(Character const & src) {
 		{
 			if (m_Materia[i])
 				delete m_Materia[i];
-			m_Materia[i] = src.m_Materia[i];
+			m_Materia[i] = src.m_Materia[i]->clone();
 		}
     }
 	return (*this);
